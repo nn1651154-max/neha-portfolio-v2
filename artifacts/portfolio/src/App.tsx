@@ -4,7 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { BarChart3, Table, FileSpreadsheet, Database, Mail, MessageCircle, ArrowRight, Clock, LineChart, RefreshCw, PieChart } from "lucide-react";
+import { BarChart3, Table, FileSpreadsheet, Database, Mail, MessageCircle, ArrowRight, Clock, LineChart, RefreshCw, PieChart, Check } from "lucide-react";
 import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient();
@@ -249,6 +249,90 @@ function Portfolio() {
                 <CardDescription className="text-sm text-muted-foreground">
                   Pie chart breaking down monthly expenses by category — know exactly where your money goes.
                 </CardDescription>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
+        {/* Pricing Section */}
+        <section className="py-16 md:py-24" id="pricing">
+          <div className="mx-auto max-w-3xl text-center mb-12">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4 text-foreground">Simple Pricing</h2>
+            <p className="text-muted-foreground text-lg">
+              Clear packages with no hidden fees. Pick what fits your needs.
+            </p>
+          </div>
+
+          <div className="grid gap-6 sm:grid-cols-3 max-w-4xl mx-auto items-stretch">
+            {/* Basic */}
+            <Card className="border-border/50 shadow-sm flex flex-col" data-testid="card-pricing-basic">
+              <CardHeader className="pb-4">
+                <p className="text-sm font-semibold uppercase tracking-widest text-primary mb-2">Basic</p>
+                <div className="flex items-end gap-1">
+                  <span className="text-4xl font-extrabold text-foreground">$10</span>
+                </div>
+              </CardHeader>
+              <CardContent className="flex flex-col flex-1 gap-4">
+                <ul className="space-y-3 flex-1">
+                  {["1 simple Excel report", "Clean & organized layout", "Delivered in 24 hours"].map((item) => (
+                    <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
+                      <Check className="h-4 w-4 mt-0.5 shrink-0 text-primary" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <Button variant="outline" className="w-full border-primary/30 hover:bg-primary/10" onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })} data-testid="button-pricing-basic">
+                  Get Started
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Standard — highlighted */}
+            <Card className="border-primary/40 shadow-md bg-primary/5 flex flex-col relative" data-testid="card-pricing-standard">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                <span className="bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full">Most Popular</span>
+              </div>
+              <CardHeader className="pb-4">
+                <p className="text-sm font-semibold uppercase tracking-widest text-primary mb-2">Standard</p>
+                <div className="flex items-end gap-1">
+                  <span className="text-4xl font-extrabold text-foreground">$25</span>
+                </div>
+              </CardHeader>
+              <CardContent className="flex flex-col flex-1 gap-4">
+                <ul className="space-y-3 flex-1">
+                  {["2 Excel reports", "1 professional chart", "Clean & organized layout", "Delivered in 24 hours"].map((item) => (
+                    <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
+                      <Check className="h-4 w-4 mt-0.5 shrink-0 text-primary" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <Button className="w-full" onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })} data-testid="button-pricing-standard">
+                  Get Started
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Premium */}
+            <Card className="border-border/50 shadow-sm flex flex-col" data-testid="card-pricing-premium">
+              <CardHeader className="pb-4">
+                <p className="text-sm font-semibold uppercase tracking-widest text-primary mb-2">Premium</p>
+                <div className="flex items-end gap-1">
+                  <span className="text-4xl font-extrabold text-foreground">$45</span>
+                </div>
+              </CardHeader>
+              <CardContent className="flex flex-col flex-1 gap-4">
+                <ul className="space-y-3 flex-1">
+                  {["Full Excel dashboard", "Charts & pivot tables", "2 rounds of revisions", "Delivered in 24 hours"].map((item) => (
+                    <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
+                      <Check className="h-4 w-4 mt-0.5 shrink-0 text-primary" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <Button variant="outline" className="w-full border-primary/30 hover:bg-primary/10" onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })} data-testid="button-pricing-premium">
+                  Get Started
+                </Button>
               </CardContent>
             </Card>
           </div>
