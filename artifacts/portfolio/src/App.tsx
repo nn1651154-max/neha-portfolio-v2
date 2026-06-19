@@ -52,6 +52,14 @@ const translations = {
       inventory: { title: "Inventory Tracker", desc: "Table and chart combo for tracking stock levels — see what is running low at a glance.", cols: ["Item", "Stock", "Status"] },
       expense: { title: "Expense Dashboard", desc: "Pie chart breaking down monthly expenses by category — know exactly where your money goes." },
     },
+    testimonials: {
+      heading: "Clients Say",
+      sub: "Kind words from people I have worked with.",
+      items: [
+        { quote: "Neha delivered my sales report in less than 12 hours. Everything was clean, clearly labeled, and exactly what I needed. Will definitely hire again.", name: "Ahmed R.", role: "Small Business Owner" },
+        { quote: "She kept me updated at every step and made changes the same day I asked. Very easy to work with and the final chart was perfect.", name: "Sara K.", role: "Online Retailer" },
+      ],
+    },
     pricing: {
       heading: "Simple Pricing",
       sub: "Clear packages with no hidden fees. Pick what fits your needs.",
@@ -118,6 +126,14 @@ const translations = {
       sales: { title: "سیلز رپورٹ", desc: "ماہانہ پروڈکٹ سیلز کو زمرے کے مطابق بار چارٹ میں دکھایا — پڑھنے میں آسان۔" },
       inventory: { title: "انوینٹری ٹریکر", desc: "اسٹاک لیولز ٹریک کرنے کے لیے ٹیبل اور چارٹ کا مجموعہ۔", cols: ["آئٹم", "اسٹاک", "اسٹیٹس"] },
       expense: { title: "اخراجات ڈیش بورڈ", desc: "ماہانہ اخراجات کو زمرے کے مطابق پائی چارٹ میں دکھایا۔" },
+    },
+    testimonials: {
+      heading: "کلائنٹس کیا کہتے ہیں",
+      sub: "جن لوگوں کے ساتھ میں نے کام کیا ان کے الفاظ۔",
+      items: [
+        { quote: "نیہا نے میری سیلز رپورٹ 12 گھنٹوں سے بھی کم وقت میں دی۔ سب کچھ صاف اور بالکل وہی تھا جو مجھے چاہیے تھا۔ ضرور دوبارہ کام کروں گا۔", name: "احمد ر۔", role: "چھوٹے کاروبار کے مالک" },
+        { quote: "انہوں نے مجھے ہر قدم پر اپ ڈیٹ رکھا اور اسی دن تبدیلیاں کیں۔ کام کرنا بہت آسان تھا اور آخری چارٹ بالکل درست تھا۔", name: "سارہ ک۔", role: "آن لائن ریٹیلر" },
+      ],
     },
     pricing: {
       heading: "سادہ قیمتیں",
@@ -363,6 +379,30 @@ function Portfolio() {
                 <CardDescription className="text-sm text-muted-foreground">{t.projects.expense.desc}</CardDescription>
               </CardContent>
             </Card>
+          </div>
+        </section>
+
+        {/* Testimonials Section */}
+        <section className="py-16 md:py-24" id="testimonials">
+          <div className="mx-auto max-w-3xl text-center mb-12">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4 text-foreground">{t.testimonials.heading}</h2>
+            <p className="text-muted-foreground text-lg">{t.testimonials.sub}</p>
+          </div>
+          <div className="grid gap-6 sm:grid-cols-2 max-w-4xl mx-auto">
+            {t.testimonials.items.map((item, i) => (
+              <div key={i} className="flex flex-col gap-4 rounded-2xl border border-border/50 bg-primary/5 p-8" data-testid={`card-testimonial-${i}`}>
+                <div className="flex gap-1">
+                  {[...Array(5)].map((_, s) => (
+                    <svg key={s} className="h-4 w-4 fill-primary" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                  ))}
+                </div>
+                <p className="text-muted-foreground leading-relaxed flex-1">"{item.quote}"</p>
+                <div>
+                  <p className="font-semibold text-foreground text-sm">{item.name}</p>
+                  <p className="text-xs text-primary">{item.role}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </section>
 
