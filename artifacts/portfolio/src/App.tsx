@@ -34,6 +34,16 @@ const translations = {
       heading: "About Me",
       body: "Hi, I'm Neha from Mian Channu, Punjab. I'm a beginner freelancer with strong skills in data entry, Excel reports, and Fiverr gig SEO. I may be new, but I'm detail-oriented, fast, and committed to giving 100% to every client. I'm excited to help your business grow.",
     },
+    skills: {
+      heading: "My Skills",
+      sub: "What I bring to every project.",
+      items: [
+        { label: "Data Entry", pct: 90 },
+        { label: "Excel Reports", pct: 85 },
+        { label: "Fiverr Gig SEO", pct: 80 },
+        { label: "Data Cleaning", pct: 85 },
+      ],
+    },
     services: {
       heading: "How I Can Help",
       sub: "Professional data services tailored to bring clarity to your business.",
@@ -112,6 +122,16 @@ const translations = {
     about: {
       heading: "میرے بارے میں",
       body: "ہیلو، میں نیہا ہوں، میاں چنوں، پنجاب سے۔ میں ایک ابتدائی فری لانسر ہوں جس کے پاس ڈیٹا انٹری، ایکسل رپورٹس، اور Fiverr گگ SEO میں مضبوط مہارتیں ہیں۔ میں نئی ہوں، لیکن میں تفصیل پر توجہ دیتی ہوں، تیز کام کرتی ہوں، اور ہر کلائنٹ کو 100٪ دینے کے لیے پرعزم ہوں۔ میں آپ کے کاروبار کو بڑھانے میں مدد کرنے کے لیے پرجوش ہوں۔",
+    },
+    skills: {
+      heading: "میری مہارتیں",
+      sub: "میں ہر پراجیکٹ میں یہ لاتی ہوں۔",
+      items: [
+        { label: "ڈیٹا انٹری", pct: 90 },
+        { label: "ایکسل رپورٹس", pct: 85 },
+        { label: "Fiverr گگ SEO", pct: 80 },
+        { label: "ڈیٹا کلیننگ", pct: 85 },
+      ],
     },
     services: {
       heading: "میں کیسے مدد کر سکتی ہوں",
@@ -260,6 +280,32 @@ function Portfolio() {
                 <h2 className="text-2xl font-bold text-foreground mb-4">{t.about.heading}</h2>
                 <p className="text-muted-foreground leading-relaxed text-lg">{t.about.body}</p>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Skills Section */}
+        <section className="py-16 md:py-24" id="skills">
+          <div className="mx-auto max-w-3xl">
+            <div className="text-center mb-10">
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4 text-foreground">{t.skills.heading}</h2>
+              <p className="text-muted-foreground text-lg">{t.skills.sub}</p>
+            </div>
+            <div className="flex flex-col gap-6" data-testid="section-skills">
+              {t.skills.items.map((skill) => (
+                <div key={skill.label} data-testid={`skill-bar-${skill.pct}`}>
+                  <div className="flex justify-between mb-1.5">
+                    <span className="text-sm font-semibold text-foreground">{skill.label}</span>
+                    <span className="text-sm font-semibold text-primary">{skill.pct}%</span>
+                  </div>
+                  <div className="h-3 w-full rounded-full bg-primary/10">
+                    <div
+                      className="h-3 rounded-full bg-primary transition-all"
+                      style={{ width: `${skill.pct}%` }}
+                    />
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
