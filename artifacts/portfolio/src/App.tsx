@@ -1,10 +1,14 @@
 import { Switch, Route, Router as WouterRouter } from "wouter";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { useState } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { BarChart3, Table, FileSpreadsheet, Database, Mail, MessageCircle, ArrowRight, Clock, LineChart, RefreshCw, PieChart, Check } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { BarChart3, Table, FileSpreadsheet, Database, Mail, MessageCircle, ArrowRight, Clock, LineChart, RefreshCw, PieChart, Check, Send } from "lucide-react";
 import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient();
@@ -12,6 +16,18 @@ const queryClient = new QueryClient();
 function Portfolio() {
   const scrollToContact = () => {
     document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [sent, setSent] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const subject = encodeURIComponent(`Message from ${form.name}`);
+    const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`);
+    window.location.href = `mailto:neha.data@gmail.com?subject=${subject}&body=${body}`;
+    setSent(true);
+    setForm({ name: "", email: "", message: "" });
   };
 
   return (
@@ -357,25 +373,95 @@ function Portfolio() {
 
         {/* Contact Section */}
         <section id="contact" className="py-24 md:py-32">
-          <div className="mx-auto max-w-2xl rounded-2xl bg-primary/5 px-6 py-12 sm:py-16 md:px-12 text-center border border-primary/10">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4 text-foreground">Let's Work Together</h2>
-            <p className="mx-auto max-w-xl text-lg text-muted-foreground mb-8">
-              Ready to make your data work for you? Send me an email or a message on WhatsApp to discuss your project.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Button asChild size="lg" className="gap-2" data-testid="link-email">
-                <a href="mailto:neha.data@gmail.com">
-                  <Mail className="h-5 w-5" />
-                  neha.data@gmail.com
-                </a>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="gap-2 border-primary/20 hover:bg-primary/10" data-testid="link-whatsapp">
-                <a href="https://wa.me/923000000000" target="_blank" rel="noopener noreferrer">
-                  <MessageCircle className="h-5 w-5" />
-                  WhatsApp Me
-                </a>
-              </Button>
+          <div className="mx-auto max-w-5xl">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4 text-foreground">Let's Work Together</h2>
+              <p className="text-lg text-muted-foreground">
+                Ready to make your data work for you? Fill in the form or reach out directly.
+              </p>
+            </div>
+
+            <div className="grid gap-8 md:grid-cols-2 items-start">
+              {/* Direct contact */}
+              <div className="rounded-2xl bg-primary/5 border border-primary/10 p-8 flex flex-col gap-6">
+                <div>
+                  <h3 className="text-lg font-semibold text-foreground mb-1">Contact directly</h3>
+                  <p className="text-sm text-muted-foreground">Prefer to reach out yourself? Email or WhatsApp works too.</p>
+                </div>
+                <div className="flex flex-col gap-3">
+                  <Button asChild size="lg" className="gap-2 w-full" data-testid="link-email">
+                    <a href="mailto:neha.data@gmail.com">
+                      <Mail className="h-5 w-5" />
+                      neha.data@gmail.com
+                    </a>
+                  </Button>
+                  <Button asChild variant="outline" size="lg" className="gap-2 w-full border-primary/20 hover:bg-primary/10" data-testid="link-whatsapp">
+                    <a href="https://wa.me/923000000000" target="_blank" rel="noopener noreferrer">
+                      <MessageCircle className="h-5 w-5" />
+                      WhatsApp Me
+                    </a>
+                  </Button>
+                </div>
+              </div>
+
+              {/* Contact form */}
+              <div className="rounded-2xl border border-border/50 p-8 shadow-sm">
+                {sent ? (
+                  <div className="flex flex-col items-center justify-center h-full gap-4 text-center py-8">
+                    <div className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary">
+                      <Check className="h-7 w-7" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-foreground">Message ready to send!</h3>
+                    <p className="text-sm text-muted-foreground">Your email app opened with the message pre-filled. Just hit send.</p>
+                    <Button variant="outline" className="mt-2 border-primary/20 hover:bg-primary/10" onClick={() => setSent(false)} data-testid="button-send-another">
+                      Send another
+                    </Button>
+                  </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="flex flex-col gap-5" data-testid="form-contact">
+                    <h3 className="text-lg font-semibold text-foreground">Send a message</h3>
+                    <div className="flex flex-col gap-1.5">
+                      <Label htmlFor="name">Name</Label>
+                      <Input
+                        id="name"
+                        placeholder="Your name"
+                        value={form.name}
+                        onChange={(e) => setForm({ ...form, name: e.target.value })}
+                        required
+                        data-testid="input-name"
+                      />
+                    </div>
+                    <div className="flex flex-col gap-1.5">
+                      <Label htmlFor="email">Email</Label>
+                      <Input
+                        id="email"
+                        type="email"
+                        placeholder="your@email.com"
+                        value={form.email}
+                        onChange={(e) => setForm({ ...form, email: e.target.value })}
+                        required
+                        data-testid="input-email"
+                      />
+                    </div>
+                    <div className="flex flex-col gap-1.5">
+                      <Label htmlFor="message">Message</Label>
+                      <Textarea
+                        id="message"
+                        placeholder="Tell me about your project..."
+                        rows={4}
+                        value={form.message}
+                        onChange={(e) => setForm({ ...form, message: e.target.value })}
+                        required
+                        data-testid="input-message"
+                      />
+                    </div>
+                    <Button type="submit" className="gap-2 w-full" data-testid="button-submit-form">
+                      <Send className="h-4 w-4" />
+                      Send Message
+                    </Button>
+                  </form>
+                )}
+              </div>
             </div>
           </div>
         </section>
