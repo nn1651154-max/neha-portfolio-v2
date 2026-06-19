@@ -89,6 +89,7 @@ const translations = {
       directHeading: "Contact directly",
       directSub: "Prefer to reach out yourself? Email or WhatsApp works too.",
       whatsapp: "WhatsApp Me",
+      fiverr: "View Fiverr Profile",
       formHeading: "Send a message",
       namePlaceholder: "Your name",
       emailPlaceholder: "your@email.com",
@@ -178,6 +179,7 @@ const translations = {
       directHeading: "براہ راست رابطہ",
       directSub: "خود رابطہ کرنا پسند ہے؟ ای میل یا واٹس ایپ بھی کام کرتا ہے۔",
       whatsapp: "واٹس ایپ کریں",
+      fiverr: "Fiverr پروفائل دیکھیں",
       formHeading: "پیغام بھیجیں",
       namePlaceholder: "آپ کا نام",
       emailPlaceholder: "آپ کی ای میل",
@@ -573,6 +575,14 @@ function Portfolio() {
                     <a href="https://wa.me/923000000000" target="_blank" rel="noopener noreferrer">
                       <MessageCircle className="h-5 w-5" />
                       {t.contact.whatsapp}
+                    </a>
+                  </Button>
+                  <Button asChild variant="outline" size="lg" className="gap-2 w-full border-[#1DBF73]/40 text-[#1DBF73] hover:bg-[#1DBF73]/10" data-testid="link-fiverr">
+                    <a href="https://www.fiverr.com/apna_username_dalna" target="_blank" rel="noopener noreferrer">
+                      <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M23.004 15.588a.995.995 0 1 0 .002-1.99.995.995 0 0 0-.002 1.99zm-.996-3.705h-.85c-.546 0-.84.41-.84 1.092v2.613h-1.618v-3.705h-.718v-1.337h.718v-.574c0-1.21.76-1.87 1.954-1.87.47 0 .908.07 1.354.14v1.29h-.84c-.547 0-.718.273-.718.615v.4h1.558l-.2 1.337-.8-.001zm-5.247 3.705H15.15v-3.705h-.718v-1.337h.718v-.738c0-1.21.76-1.87 1.954-1.87.47 0 .908.07 1.354.14v1.29h-.84c-.547 0-.718.273-.718.615v.563h1.558l-.2 1.337h-1.358v3.705h.862zm-4.74-5.042h-1.618v5.042H8.785v-5.042H8.07v-1.337h.718v-.492c0-1.21.76-1.87 1.954-1.87.334 0 .67.042 1.002.098v1.295h-.718c-.547 0-.718.273-.718.615v.354h1.618l-.204 1.337zm-4.81 5.042H5.593v-6.379h1.618v6.379zm-2.81-8.54c0 .546-.41.84-1.092.84-.682 0-1.092-.294-1.092-.84 0-.546.41-.84 1.092-.84.682 0 1.092.294 1.092.84zm-2.184 8.54H0V8.03h1.617v7.558z"/>
+                      </svg>
+                      {t.contact.fiverr}
                     </a>
                   </Button>
                 </div>
