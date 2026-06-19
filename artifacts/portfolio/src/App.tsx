@@ -4,7 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { BarChart3, Table, FileSpreadsheet, Database, Mail, MessageCircle, ArrowRight } from "lucide-react";
+import { BarChart3, Table, FileSpreadsheet, Database, Mail, MessageCircle, ArrowRight, Clock, LineChart, RefreshCw } from "lucide-react";
 import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient();
@@ -111,6 +111,48 @@ function Portfolio() {
                 </CardDescription>
               </CardContent>
             </Card>
+          </div>
+        </section>
+
+        {/* Why Work With Me Section */}
+        <section className="py-16 md:py-24" id="why-me">
+          <div className="mx-auto max-w-3xl text-center mb-12">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4 text-foreground">Why Work With Me</h2>
+            <p className="text-muted-foreground text-lg">
+              Here is what you can expect every single time.
+            </p>
+          </div>
+
+          <div className="grid gap-6 sm:grid-cols-3 max-w-4xl mx-auto">
+            <div className="flex flex-col items-center text-center p-8 rounded-2xl border border-border/50 bg-primary/5 hover:border-primary/20 transition-all" data-testid="card-why-delivery">
+              <div className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary mb-5">
+                <Clock className="h-7 w-7" />
+              </div>
+              <h3 className="text-xl font-bold text-foreground mb-3">Fast Delivery</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                I deliver clean Excel reports within 24 hours.
+              </p>
+            </div>
+
+            <div className="flex flex-col items-center text-center p-8 rounded-2xl border border-border/50 bg-primary/5 hover:border-primary/20 transition-all" data-testid="card-why-charts">
+              <div className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary mb-5">
+                <LineChart className="h-7 w-7" />
+              </div>
+              <h3 className="text-xl font-bold text-foreground mb-3">Clear Charts</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                I turn messy data into simple charts you can understand.
+              </p>
+            </div>
+
+            <div className="flex flex-col items-center text-center p-8 rounded-2xl border border-border/50 bg-primary/5 hover:border-primary/20 transition-all" data-testid="card-why-revisions">
+              <div className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary mb-5">
+                <RefreshCw className="h-7 w-7" />
+              </div>
+              <h3 className="text-xl font-bold text-foreground mb-3">Unlimited Revisions</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                I will keep editing until you are 100% happy.
+              </p>
+            </div>
           </div>
         </section>
 
