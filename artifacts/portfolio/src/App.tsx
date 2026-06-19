@@ -101,6 +101,7 @@ const translations = {
       sentHeading: "Message ready to send!",
       sentSub: "Your email app opened with the message pre-filled. Just hit send.",
       sendAnother: "Send another",
+      responseTime: "Usually responds within 1 hour",
     },
     footer: "Data Analyst based in Mian Channu, Punjab.",
   },
@@ -191,6 +192,7 @@ const translations = {
       sentHeading: "پیغام بھیجنے کے لیے تیار!",
       sentSub: "آپ کی ای میل ایپ کھل گئی ہے اور پیغام پہلے سے بھرا ہوا ہے۔ بس بھیجیں۔",
       sendAnother: "ایک اور بھیجیں",
+      responseTime: "عام طور پر 1 گھنٹے میں جواب دیتی ہیں",
     },
     footer: "ڈیٹا انالسٹ، میاں چنوں، پنجاب۔",
   },
@@ -555,7 +557,11 @@ function Portfolio() {
           <div className="mx-auto max-w-5xl">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4 text-foreground">{t.contact.heading}</h2>
-              <p className="text-lg text-muted-foreground">{t.contact.sub}</p>
+              <p className="text-lg text-muted-foreground mb-4">{t.contact.sub}</p>
+              <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary" data-testid="badge-response-time">
+                <span className="flex h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+                {t.contact.responseTime}
+              </div>
             </div>
 
             <div className="grid gap-8 md:grid-cols-2 items-start">
