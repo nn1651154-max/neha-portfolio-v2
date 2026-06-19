@@ -27,7 +27,7 @@ const translations = {
     hero: {
       badge: "Freelance Data Analyst",
       heading: "Hi, I'm Neha",
-      sub: "I turn messy data into clear insights. Based in Multan, Pakistan, I help businesses make sense of their numbers through clean organization and powerful visualization.",
+      sub: "I turn messy data into clear insights. Based in Mian Channu, Punjab, I help businesses make sense of their numbers through clean organization and powerful visualization.",
       cta: "Let's Work Together",
     },
     services: {
@@ -87,7 +87,7 @@ const translations = {
       sentSub: "Your email app opened with the message pre-filled. Just hit send.",
       sendAnother: "Send another",
     },
-    footer: "Data Analyst based in Multan, Pakistan.",
+    footer: "Data Analyst based in Mian Channu, Punjab.",
   },
   ur: {
     dir: "rtl" as const,
@@ -102,7 +102,7 @@ const translations = {
     hero: {
       badge: "فری لانس ڈیٹا انالسٹ",
       heading: "ہیلو، میں نیہا ہوں",
-      sub: "میں پیچیدہ ڈیٹا کو واضح نتائج میں بدلتی ہوں۔ ملتان، پاکستان سے، میں کاروباروں کو ان کے اعداد و شمار سمجھنے میں مدد کرتی ہوں۔",
+      sub: "میں پیچیدہ ڈیٹا کو واضح نتائج میں بدلتی ہوں۔ میاں چنوں، پنجاب سے، میں کاروباروں کو ان کے اعداد و شمار سمجھنے میں مدد کرتی ہوں۔",
       cta: "مل کر کام کریں",
     },
     services: {
@@ -162,7 +162,7 @@ const translations = {
       sentSub: "آپ کی ای میل ایپ کھل گئی ہے اور پیغام پہلے سے بھرا ہوا ہے۔ بس بھیجیں۔",
       sendAnother: "ایک اور بھیجیں",
     },
-    footer: "ڈیٹا انالسٹ، ملتان، پاکستان۔",
+    footer: "ڈیٹا انالسٹ، میاں چنوں، پنجاب۔",
   },
 };
 
