@@ -20,6 +20,23 @@ function Portfolio() {
       <nav className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
           <div className="text-xl font-bold tracking-tight text-primary">Neha</div>
+          <div className="hidden sm:flex items-center gap-1">
+            {[
+              { label: "Services", id: "services" },
+              { label: "Projects", id: "projects" },
+              { label: "Pricing",  id: "pricing"  },
+              { label: "Contact",  id: "contact"  },
+            ].map(({ label, id }) => (
+              <button
+                key={id}
+                onClick={() => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })}
+                className="px-3 py-1.5 text-sm font-medium text-muted-foreground hover:text-primary transition-colors rounded-md hover:bg-primary/5"
+                data-testid={`link-nav-${id}`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
           <Button variant="outline" onClick={scrollToContact} className="font-medium" data-testid="button-nav-contact">
             Contact Me
           </Button>
