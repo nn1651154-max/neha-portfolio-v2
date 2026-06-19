@@ -30,6 +30,10 @@ const translations = {
       sub: "I turn messy data into clear insights. Based in Mian Channu, Punjab, I help businesses make sense of their numbers through clean organization and powerful visualization.",
       cta: "Let's Work Together",
     },
+    about: {
+      heading: "About Me",
+      body: "Hi, I'm Neha from Mian Channu, Punjab. I'm a beginner freelancer with strong skills in data entry, Excel reports, and Fiverr gig SEO. I may be new, but I'm detail-oriented, fast, and committed to giving 100% to every client. I'm excited to help your business grow.",
+    },
     services: {
       heading: "How I Can Help",
       sub: "Professional data services tailored to bring clarity to your business.",
@@ -104,6 +108,10 @@ const translations = {
       heading: "ہیلو، میں نیہا ہوں",
       sub: "میں پیچیدہ ڈیٹا کو واضح نتائج میں بدلتی ہوں۔ میاں چنوں، پنجاب سے، میں کاروباروں کو ان کے اعداد و شمار سمجھنے میں مدد کرتی ہوں۔",
       cta: "مل کر کام کریں",
+    },
+    about: {
+      heading: "میرے بارے میں",
+      body: "ہیلو، میں نیہا ہوں، میاں چنوں، پنجاب سے۔ میں ایک ابتدائی فری لانسر ہوں جس کے پاس ڈیٹا انٹری، ایکسل رپورٹس، اور Fiverr گگ SEO میں مضبوط مہارتیں ہیں۔ میں نئی ہوں، لیکن میں تفصیل پر توجہ دیتی ہوں، تیز کام کرتی ہوں، اور ہر کلائنٹ کو 100٪ دینے کے لیے پرعزم ہوں۔ میں آپ کے کاروبار کو بڑھانے میں مدد کرنے کے لیے پرجوش ہوں۔",
     },
     services: {
       heading: "میں کیسے مدد کر سکتی ہوں",
@@ -238,6 +246,21 @@ function Portfolio() {
             <Button size="lg" onClick={scrollToContact} className="gap-2" data-testid="button-hero-contact">
               {t.hero.cta} <ArrowRight className="h-4 w-4" />
             </Button>
+          </div>
+        </section>
+
+        {/* About Me Section */}
+        <section className="py-16 md:py-24" id="about">
+          <div className="mx-auto max-w-3xl">
+            <div className="rounded-2xl border border-primary/20 bg-primary/5 px-8 py-12 md:px-14 flex flex-col md:flex-row gap-8 items-center">
+              <div className="flex-shrink-0 flex items-center justify-center h-24 w-24 rounded-full bg-primary/10 text-primary text-4xl font-extrabold">
+                N
+              </div>
+              <div>
+                <h2 className="text-2xl font-bold text-foreground mb-4">{t.about.heading}</h2>
+                <p className="text-muted-foreground leading-relaxed text-lg">{t.about.body}</p>
+              </div>
+            </div>
           </div>
         </section>
 
