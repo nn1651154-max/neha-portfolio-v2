@@ -4,7 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { BarChart3, Table, FileSpreadsheet, Database, Mail, MessageCircle, ArrowRight, Clock, LineChart, RefreshCw } from "lucide-react";
+import { BarChart3, Table, FileSpreadsheet, Database, Mail, MessageCircle, ArrowRight, Clock, LineChart, RefreshCw, PieChart } from "lucide-react";
 import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient();
@@ -153,6 +153,104 @@ function Portfolio() {
                 I will keep editing until you are 100% happy.
               </p>
             </div>
+          </div>
+        </section>
+
+        {/* Projects Section */}
+        <section className="py-16 md:py-24" id="projects">
+          <div className="mx-auto max-w-3xl text-center mb-12">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4 text-foreground">Sample Projects</h2>
+            <p className="text-muted-foreground text-lg">
+              A look at the kind of work I do for clients.
+            </p>
+          </div>
+
+          <div className="grid gap-6 sm:grid-cols-3 max-w-5xl mx-auto">
+            <Card className="border-border/50 shadow-sm hover:shadow-md hover:border-primary/20 transition-all overflow-hidden" data-testid="card-project-sales">
+              <div className="h-36 bg-primary/10 flex items-center justify-center">
+                <div className="flex items-end gap-2">
+                  {[40, 65, 50, 80, 60, 90].map((h, i) => (
+                    <div
+                      key={i}
+                      className="w-6 rounded-t-sm bg-primary/60"
+                      style={{ height: `${h}px` }}
+                    />
+                  ))}
+                </div>
+              </div>
+              <CardHeader className="pb-2">
+                <div className="flex items-center gap-2 mb-1">
+                  <div className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-primary/10 text-primary">
+                    <BarChart3 className="h-4 w-4" />
+                  </div>
+                  <CardTitle className="text-lg">Sales Report</CardTitle>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-sm text-muted-foreground">
+                  Bar chart showing monthly product sales broken down by category — easy to read, ready to share.
+                </CardDescription>
+              </CardContent>
+            </Card>
+
+            <Card className="border-border/50 shadow-sm hover:shadow-md hover:border-primary/20 transition-all overflow-hidden" data-testid="card-project-inventory">
+              <div className="h-36 bg-primary/10 flex items-center justify-center gap-4">
+                <div className="w-24 rounded-md border border-primary/30 overflow-hidden text-xs">
+                  {["Item", "Stock", "Status"].map((col, i) => (
+                    <div key={i} className={`px-2 py-1 ${i === 0 ? "bg-primary/20 font-semibold text-primary" : "bg-white/60 text-muted-foreground"} border-b border-primary/10 last:border-0`}>
+                      {col}
+                    </div>
+                  ))}
+                </div>
+                <div className="flex items-end gap-1">
+                  {[55, 80, 35, 70].map((h, i) => (
+                    <div key={i} className="w-4 rounded-t-sm bg-primary/50" style={{ height: `${h}px` }} />
+                  ))}
+                </div>
+              </div>
+              <CardHeader className="pb-2">
+                <div className="flex items-center gap-2 mb-1">
+                  <div className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-primary/10 text-primary">
+                    <Table className="h-4 w-4" />
+                  </div>
+                  <CardTitle className="text-lg">Inventory Tracker</CardTitle>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-sm text-muted-foreground">
+                  Table and chart combo for tracking stock levels — see what is running low at a glance.
+                </CardDescription>
+              </CardContent>
+            </Card>
+
+            <Card className="border-border/50 shadow-sm hover:shadow-md hover:border-primary/20 transition-all overflow-hidden" data-testid="card-project-expense">
+              <div className="h-36 bg-primary/10 flex items-center justify-center">
+                <div className="relative h-24 w-24">
+                  <svg viewBox="0 0 36 36" className="h-24 w-24 -rotate-90">
+                    <circle cx="18" cy="18" r="15.9" fill="none" stroke="hsl(var(--primary) / 0.15)" strokeWidth="3.2" />
+                    <circle cx="18" cy="18" r="15.9" fill="none" stroke="hsl(var(--primary))" strokeWidth="3.2" strokeDasharray="40 60" />
+                    <circle cx="18" cy="18" r="15.9" fill="none" stroke="hsl(var(--primary) / 0.5)" strokeWidth="3.2" strokeDasharray="25 75" strokeDashoffset="-40" />
+                    <circle cx="18" cy="18" r="15.9" fill="none" stroke="hsl(var(--primary) / 0.3)" strokeWidth="3.2" strokeDasharray="35 65" strokeDashoffset="-65" />
+                  </svg>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <PieChart className="h-5 w-5 text-primary" />
+                  </div>
+                </div>
+              </div>
+              <CardHeader className="pb-2">
+                <div className="flex items-center gap-2 mb-1">
+                  <div className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-primary/10 text-primary">
+                    <PieChart className="h-4 w-4" />
+                  </div>
+                  <CardTitle className="text-lg">Expense Dashboard</CardTitle>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-sm text-muted-foreground">
+                  Pie chart breaking down monthly expenses by category — know exactly where your money goes.
+                </CardDescription>
+              </CardContent>
+            </Card>
           </div>
         </section>
 
