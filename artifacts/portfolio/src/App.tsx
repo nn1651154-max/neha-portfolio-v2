@@ -103,6 +103,16 @@ const translations = {
       sendAnother: "Send another",
       responseTime: "Usually responds within 1 hour",
     },
+    faq: {
+      heading: "Frequently Asked Questions",
+      sub: "Quick answers to common questions.",
+      items: [
+        { q: "How do I send you my data?", a: "Just share your Excel or CSV file via WhatsApp or email. I will take it from there." },
+        { q: "Do you offer revisions?", a: "Yes. Basic and Standard packages include unlimited revisions. Premium includes 2 rounds of revisions." },
+        { q: "How long does a project take?", a: "Most reports are delivered within 24 hours. Larger dashboards may take up to 48 hours." },
+        { q: "What if I am not happy with the result?", a: "I will keep editing until you are 100% satisfied. Your happiness is my priority." },
+      ],
+    },
     footer: "Data Analyst based in Mian Channu, Punjab.",
   },
   ur: {
@@ -194,11 +204,42 @@ const translations = {
       sendAnother: "ایک اور بھیجیں",
       responseTime: "عام طور پر 1 گھنٹے میں جواب دیتی ہیں",
     },
+    faq: {
+      heading: "اکثر پوچھے جانے والے سوالات",
+      sub: "عام سوالوں کے فوری جوابات۔",
+      items: [
+        { q: "میں آپ کو اپنا ڈیٹا کیسے بھیجوں؟", a: "بس اپنی ایکسل یا CSV فائل واٹس ایپ یا ای میل پر شیئر کریں۔ باقی کام میں کروں گی۔" },
+        { q: "کیا آپ ترامیم کرتی ہیں؟", a: "ہاں۔ بنیادی اور معیاری پیکیج میں لامحدود ترامیم شامل ہیں۔ پریمیم میں 2 مرتبہ ترامیم ہیں۔" },
+        { q: "ایک پراجیکٹ میں کتنا وقت لگتا ہے؟", a: "زیادہ تر رپورٹس 24 گھنٹوں میں فراہم کی جاتی ہیں۔ بڑے ڈیش بورڈز میں 48 گھنٹے لگ سکتے ہیں۔" },
+        { q: "اگر میں نتیجے سے خوش نہ ہوں تو؟", a: "میں اس وقت تک ترمیم کرتی رہوں گی جب تک آپ 100٪ مطمئن نہ ہو جائیں۔ آپ کی خوشی میری ترجیح ہے۔" },
+      ],
+    },
     footer: "ڈیٹا انالسٹ، میاں چنوں، پنجاب۔",
   },
 };
 
 type Lang = keyof typeof translations;
+
+function FaqItem({ question, answer, index }: { question: string; answer: string; index: number }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="py-5" data-testid={`faq-item-${index}`}>
+      <button
+        className="flex w-full items-center justify-between gap-4 text-left"
+        onClick={() => setOpen(!open)}
+        data-testid={`faq-toggle-${index}`}
+      >
+        <span className="font-semibold text-foreground">{question}</span>
+        <span className={`shrink-0 h-6 w-6 rounded-full bg-primary/10 text-primary flex items-center justify-center transition-transform duration-200 ${open ? "rotate-45" : ""}`}>
+          <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M12 5v14M5 12h14" /></svg>
+        </span>
+      </button>
+      {open && (
+        <p className="mt-3 text-muted-foreground leading-relaxed">{answer}</p>
+      )}
+    </div>
+  );
+}
 
 function Portfolio() {
   const [lang, setLang] = useState<Lang>("en");
@@ -549,6 +590,21 @@ function Portfolio() {
                 </Button>
               </CardContent>
             </Card>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-16 md:py-24" id="faq">
+          <div className="mx-auto max-w-3xl">
+            <div className="text-center mb-10">
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4 text-foreground">{t.faq.heading}</h2>
+              <p className="text-muted-foreground text-lg">{t.faq.sub}</p>
+            </div>
+            <div className="flex flex-col divide-y divide-border/50" data-testid="section-faq">
+              {t.faq.items.map((item, i) => (
+                <FaqItem key={i} question={item.q} answer={item.a} index={i} />
+              ))}
+            </div>
           </div>
         </section>
 
